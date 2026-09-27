@@ -11,9 +11,11 @@ permissions:
 
 jobs:
   release-please:
+    # Skipped until the release-bot App is configured (Docs/03-ci-and-releases.md)
+    if: vars.RELEASE_BOT_APP_ID != ''
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/create-github-app-token@v1
+      - uses: actions/create-github-app-token@v2
         id: app-token
         with:
           app-id: ${{ vars.RELEASE_BOT_APP_ID }}

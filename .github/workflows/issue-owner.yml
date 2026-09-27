@@ -20,10 +20,11 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ISSUE: ${{ github.event.issue.number }}
-          ASSIGNEE_COUNT: ${{ length(github.event.issue.assignees) }}
+          ASSIGNEES: ${{ toJSON(github.event.issue.assignees) }}
           ACTION: ${{ github.event.action }}
         run: |
-          if [[ "$ASSIGNEE_COUNT" -gt 0 ]]; then
+          assignee_count="$(jq 'length' <<< "$ASSIGNEES")"
+          if [[ "$assignee_count" -gt 0 ]]; then
             gh issue edit "$ISSUE" --repo "$GITHUB_REPOSITORY" --remove-label "$NEEDS_OWNER_LABEL"
             exit 0
           fi
