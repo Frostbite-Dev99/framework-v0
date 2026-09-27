@@ -11,16 +11,13 @@ on:
 permissions:
   contents: read
 
-env:
-  RELEASE_BRANCH: release-please--branches--main
-
 jobs:
   merge-release-pr:
     if: >-
       vars.RELEASE_BOT_APP_ID != '' &&
       github.event.workflow_run.event == 'pull_request' &&
       github.event.workflow_run.conclusion == 'success' &&
-      github.event.workflow_run.head_branch == 'release-please--branches--main' &&
+      startsWith(github.event.workflow_run.head_branch, 'release-please--') &&
       github.event.workflow_run.head_repository.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
@@ -33,6 +30,7 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
           HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          RELEASE_BRANCH: ${{ github.event.workflow_run.head_branch }}
         run: |
           gh pr merge "$RELEASE_BRANCH" \
             --repo "$GITHUB_REPOSITORY" \

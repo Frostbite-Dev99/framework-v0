@@ -34,7 +34,7 @@ jobs:
   issue-link:
     name: Issue link
     # release-please's PR has no issue by design; a skipped required check counts as passed.
-    if: github.head_ref != 'release-please--branches--main'
+    if: ${{ !startsWith(github.head_ref, 'release-please--') }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
