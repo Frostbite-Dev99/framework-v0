@@ -2,7 +2,7 @@
 
 Reusable Unity 6 game framework (`Assets/_Framework`) + a small reference game that proves it (`Assets/_Game`).
 
-**New here?** Read `Docs/01` → `02` → `03`, then run `git config core.hooksPath .githooks`.
+**New here?** Start with [`Docs/00-getting-started.md`](Docs/00-getting-started.md): install, clone and open in Unity.
 
 ## What each file / folder is for
 | Path | What it's for |
@@ -11,6 +11,7 @@ Reusable Unity 6 game framework (`Assets/_Framework`) + a small reference game t
 | `Assets/_Game/` | The reference game built on the framework |
 | `Assets/_Sandbox/` | Personal experiments (`_Sandbox/<YourName>/`), never referenced by real code |
 | `Assets/ThirdParty/` | Asset Store / external imports. Don't edit |
+| `Docs/00-getting-started.md` | Install tools, clone, open in Unity, troubleshooting |
 | `Docs/01-csharp-best-practices.md` | How we write C# in Unity |
 | `Docs/02-github-workflow.md` | Issues → branch → commit → PR → review → merge, rebase, cheat sheet |
 | `Docs/03-ci-and-releases.md` | What CI checks, how releases/changelog work, one-time admin setup |
