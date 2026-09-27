@@ -49,6 +49,6 @@ PRs squash-merged to main ──▶ release-please updates "chore: release x.y.z
    - secrets `UNITY_LICENSE`, `UNITY_EMAIL`, `UNITY_PASSWORD` ([GameCI activation guide](https://game-ci.com/docs/github/activation)). Until these are set, Unity tests are **skipped** with a warning.
 3. Push the first commit to `main`, then run:
    `RELEASE_BOT_APP_SLUG=<app-slug> bash Scripts/SetupGitHubRepo.sh`
-   This creates the teams and labels, sets the merge settings and turns on protection for `main`.
-4. Add people to the teams: `team-leads` (review + merge) and `developers` (issues, branches, PRs). Org owners who merge must be in `team-leads` too.
-5. You need **at least 2 team leads**, because nobody can approve their own PR.
+   This creates the `team-leads` team and the labels, sets org base permission to **Write**, sets the merge settings and turns on protection for `main`.
+4. Invite everyone to the org. Members can push branches and open PRs. Add leads to **`team-leads`** (review + merge), including org owners who merge.
+5. Admin enforcement is **off**: admins in `team-leads` can merge their own PRs (admin bypass). Leads who aren't admins still need another lead's approval.

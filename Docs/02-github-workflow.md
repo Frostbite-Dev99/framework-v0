@@ -19,7 +19,8 @@ Issue (assigned) ──▶ branch feat/12-event-bus ──▶ commits "… (#12)
 | Push directly to `main` | ❌ | ❌ |
 
 `main` is protected: PR only, 1 code-owner (lead) approval, stale approvals dismissed, CI green, linear history, no force-push.
-A lead's own PR needs **another** lead to approve it. There's no admin bypass.
+**Admin bypass:** a lead who is a repo/org **admin** can merge their own PR without a second approval (CI must still pass by convention). Use it for small or urgent changes, and still ask another lead to look at anything big.
+A lead who isn't an admin needs another lead's approval.
 
 ---
 
