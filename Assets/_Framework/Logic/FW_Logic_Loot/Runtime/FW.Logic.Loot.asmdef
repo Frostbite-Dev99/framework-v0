@@ -1,0 +1,14 @@
+{
+    "name": "FW.Logic.Loot",
+    "rootNamespace": "FW.Logic.Loot",
+    "references": ["FW.Core.ObjectManager", "FW.Logic.Inventory"],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

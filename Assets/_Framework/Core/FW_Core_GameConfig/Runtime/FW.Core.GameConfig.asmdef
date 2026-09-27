@@ -1,0 +1,14 @@
+{
+    "name": "FW.Core.GameConfig",
+    "rootNamespace": "FW.Core.GameConfig",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

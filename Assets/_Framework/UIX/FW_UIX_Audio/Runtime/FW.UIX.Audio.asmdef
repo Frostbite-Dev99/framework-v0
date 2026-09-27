@@ -1,0 +1,14 @@
+{
+    "name": "FW.UIX.Audio",
+    "rootNamespace": "FW.UIX.Audio",
+    "references": ["FW.Core.Events", "FW.Core.ObjectManager", "FW.Core.GameConfig"],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

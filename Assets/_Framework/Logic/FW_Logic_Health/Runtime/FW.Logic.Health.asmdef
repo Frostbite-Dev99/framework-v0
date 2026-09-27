@@ -1,0 +1,14 @@
+{
+    "name": "FW.Logic.Health",
+    "rootNamespace": "FW.Logic.Health",
+    "references": ["FW.Core.Events", "FW.Logic.Stats"],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

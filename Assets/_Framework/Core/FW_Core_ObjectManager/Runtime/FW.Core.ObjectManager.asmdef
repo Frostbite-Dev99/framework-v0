@@ -1,0 +1,14 @@
+{
+    "name": "FW.Core.ObjectManager",
+    "rootNamespace": "FW.Core.ObjectManager",
+    "references": ["FW.Core.Events"],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

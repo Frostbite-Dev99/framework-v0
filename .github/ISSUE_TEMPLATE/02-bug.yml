@@ -1,0 +1,56 @@
+name: Bug
+description: Something is broken
+title: "fix(<scope>): <what is broken>"
+labels: ["type: bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **After creating: assign an owner** (yourself, or a lead assigns you). Every issue needs ≥ 1 assignee. See `Docs/02-github-workflow.md`.
+  - type: dropdown
+    id: module
+    attributes:
+      label: Module
+      options:
+        - FW_Core_Events
+        - FW_Core_SaveSystem
+        - FW_Core_ObjectManager
+        - FW_Core_SceneLoader
+        - FW_Core_GameConfig
+        - FW_UIX_ScreenManager
+        - FW_UIX_SafeArea
+        - FW_UIX_Binding
+        - FW_UIX_InputSystem
+        - FW_UIX_Audio
+        - FW_Logic_Stats
+        - FW_Logic_Health
+        - FW_Logic_FiniteStateMachine
+        - FW_Logic_Inventory
+        - FW_Logic_Loot
+        - Game (reference game)
+        - Docs / CI / Tooling
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      value: |
+        1. 
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected vs actual
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Console log / screenshot / video
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit
+      placeholder: "0.2.0 or a1b2c3d"

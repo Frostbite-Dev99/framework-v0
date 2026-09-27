@@ -1,0 +1,3 @@
+# Every PR to main needs approval from a team lead.
+# Team is created by Scripts/SetupGitHubRepo.sh — add leads at github.com/orgs/Frostbite-Dev99/teams/team-leads
+*   @Frostbite-Dev99/team-leads

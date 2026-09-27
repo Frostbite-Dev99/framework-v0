@@ -1,0 +1,14 @@
+{
+    "name": "FW.Logic.Health.Tests",
+    "rootNamespace": "FW.Logic.Health.Tests",
+    "references": ["FW.Logic.Health", "UnityEngine.TestRunner", "UnityEditor.TestRunner"],
+    "includePlatforms": ["Editor"],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": ["nunit.framework.dll"],
+    "autoReferenced": false,
+    "defineConstraints": ["UNITY_INCLUDE_TESTS"],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

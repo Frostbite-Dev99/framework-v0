@@ -1,0 +1,33 @@
+# Every issue must have at least one owner (assignee).
+# Unassigned issues get the "needs-owner" label + a reminder; the label is removed once assigned.
+name: Issue Owner
+
+on:
+  issues:
+    types: [opened, reopened, assigned, unassigned]
+
+permissions:
+  issues: write
+
+env:
+  NEEDS_OWNER_LABEL: needs-owner
+
+jobs:
+  enforce-owner:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Label or clear needs-owner
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE: ${{ github.event.issue.number }}
+          ASSIGNEE_COUNT: ${{ length(github.event.issue.assignees) }}
+          ACTION: ${{ github.event.action }}
+        run: |
+          if [[ "$ASSIGNEE_COUNT" -gt 0 ]]; then
+            gh issue edit "$ISSUE" --repo "$GITHUB_REPOSITORY" --remove-label "$NEEDS_OWNER_LABEL"
+            exit 0
+          fi
+          gh issue edit "$ISSUE" --repo "$GITHUB_REPOSITORY" --add-label "$NEEDS_OWNER_LABEL"
+          [[ "$ACTION" == "assigned" ]] && exit 0
+          gh issue comment "$ISSUE" --repo "$GITHUB_REPOSITORY" \
+            --body "⚠️ This issue has no owner. Assign yourself, or a team lead will assign someone. PRs linked to unassigned issues fail CI."

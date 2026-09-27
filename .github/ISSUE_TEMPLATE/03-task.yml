@@ -1,0 +1,47 @@
+name: Task
+description: Docs, refactor, tooling, CI, assets — no new behaviour
+title: "chore(<scope>): <short description>"
+labels: ["type: task"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **After creating: assign an owner** (yourself, or a lead assigns you). Every issue needs ≥ 1 assignee. See `Docs/02-github-workflow.md`.
+  - type: dropdown
+    id: module
+    attributes:
+      label: Module
+      options:
+        - FW_Core_Events
+        - FW_Core_SaveSystem
+        - FW_Core_ObjectManager
+        - FW_Core_SceneLoader
+        - FW_Core_GameConfig
+        - FW_UIX_ScreenManager
+        - FW_UIX_SafeArea
+        - FW_UIX_Binding
+        - FW_UIX_InputSystem
+        - FW_UIX_Audio
+        - FW_Logic_Stats
+        - FW_Logic_Health
+        - FW_Logic_FiniteStateMachine
+        - FW_Logic_Inventory
+        - FW_Logic_Loot
+        - Game (reference game)
+        - Docs / CI / Tooling
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What needs doing
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: Done when
+      value: |
+        - [ ] 
+    validations:
+      required: true

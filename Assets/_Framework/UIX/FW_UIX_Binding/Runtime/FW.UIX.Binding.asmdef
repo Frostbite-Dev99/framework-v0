@@ -1,0 +1,14 @@
+{
+    "name": "FW.UIX.Binding",
+    "rootNamespace": "FW.UIX.Binding",
+    "references": ["FW.Core.Events"],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# Ensures every commit subject references an issue: "feat(core-events): add bus (#12)".
+# Appends "(#N)" from the branch name (feat/12-event-bus) when missing.
+# Enable once per clone: git config core.hooksPath .githooks
+set -euo pipefail
+
+readonly MSG_FILE="$1"
+readonly ISSUE_REF_PATTERN='#[0-9]+'
+readonly BRANCH_ISSUE_PATTERN='^[a-z]+/([0-9]+)-'
+readonly SKIP_PATTERN='^(Merge |Revert |fixup! |squash! |amend! )'
+
+subject="$(head -n 1 "$MSG_FILE")"
+
+[[ "$subject" =~ $SKIP_PATTERN ]] && exit 0
+[[ "$subject" =~ $ISSUE_REF_PATTERN ]] && exit 0
+
+branch="$(git symbolic-ref --short HEAD 2>/dev/null || echo "")"
+if [[ ! "$branch" =~ $BRANCH_ISSUE_PATTERN ]]; then
+  echo "✖ Commit needs an issue number, e.g. 'feat(core-events): add bus (#12)'." >&2
+  echo "  Or name your branch <type>/<issue#>-<desc> (e.g. feat/12-event-bus) and it's added for you." >&2
+  exit 1
+fi
+
+issue="${BASH_REMATCH[1]}"
+sed -i.bak "1s/[[:space:]]*\$/ (#${issue})/" "$MSG_FILE" && rm -f "$MSG_FILE.bak"

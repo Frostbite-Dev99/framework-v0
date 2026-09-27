@@ -1,0 +1,54 @@
+name: Feature
+description: New behaviour or module capability
+title: "feat(<scope>): <short description>"
+labels: ["type: feature"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **After creating: assign an owner** (yourself, or a lead assigns you). Every issue needs ≥ 1 assignee. See `Docs/02-github-workflow.md`.
+  - type: dropdown
+    id: module
+    attributes:
+      label: Module
+      options:
+        - FW_Core_Events
+        - FW_Core_SaveSystem
+        - FW_Core_ObjectManager
+        - FW_Core_SceneLoader
+        - FW_Core_GameConfig
+        - FW_UIX_ScreenManager
+        - FW_UIX_SafeArea
+        - FW_UIX_Binding
+        - FW_UIX_InputSystem
+        - FW_UIX_Audio
+        - FW_Logic_Stats
+        - FW_Logic_Health
+        - FW_Logic_FiniteStateMachine
+        - FW_Logic_Inventory
+        - FW_Logic_Loot
+        - Game (reference game)
+        - Docs / CI / Tooling
+    validations:
+      required: true
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What and why, in 1-3 sentences.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: How a reviewer knows it's done. This is the spec.
+      value: |
+        - [ ] 
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes / design
+      description: API sketch, dependencies, links, screenshots.

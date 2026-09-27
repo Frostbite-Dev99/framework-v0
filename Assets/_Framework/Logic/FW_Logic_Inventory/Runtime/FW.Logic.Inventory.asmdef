@@ -1,0 +1,14 @@
+{
+    "name": "FW.Logic.Inventory",
+    "rootNamespace": "FW.Logic.Inventory",
+    "references": ["FW.Core.Events", "FW.Core.SaveSystem"],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
