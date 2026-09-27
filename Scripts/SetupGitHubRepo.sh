@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # One-time GitHub setup (run by an org admin, after the first commit exists on main):
-#   - teams: team-leads (maintain, can merge) and developers (write, cannot merge to main)
+#   - team: team-leads (maintain, can merge); org base permission = write (members push branches, can't merge)
 #   - issue labels (type / layer / priority / needs-owner)
 #   - squash-only merges, auto-merge OFF, delete branch after merge
 #   - main protection: PR + 1 code-owner (team lead) approval, required CI checks,
@@ -12,7 +12,7 @@ readonly ORG="Frostbite-Dev99"
 readonly REPO="framework-v0"
 readonly BRANCH="main"
 readonly LEADS_TEAM="team-leads"
-readonly DEVS_TEAM="developers"
+readonly BASE_PERMISSION="write"
 readonly APP_SLUG="${RELEASE_BOT_APP_SLUG:?Set RELEASE_BOT_APP_SLUG to the release bot GitHub App slug}"
 
 ensure_team() {
@@ -21,6 +21,11 @@ ensure_team() {
     || gh api -X POST "orgs/$ORG/teams" -f name="$team" -f privacy=closed --silent
   gh api -X PUT "orgs/$ORG/teams/$team/repos/$ORG/$REPO" -f permission="$permission" --silent
   echo "team $team -> $permission"
+}
+
+configure_org_base_permission() {
+  gh api -X PATCH "orgs/$ORG" -f default_repository_permission="$BASE_PERMISSION" --silent
+  echo "org base permission -> $BASE_PERMISSION"
 }
 
 configure_merge_settings() {
@@ -88,7 +93,7 @@ gh api "repos/$ORG/$REPO/branches/$BRANCH" --silent \
   || { echo "Branch $BRANCH does not exist yet - push the first commit, then rerun." >&2; exit 1; }
 
 ensure_team "$LEADS_TEAM" maintain
-ensure_team "$DEVS_TEAM" push
+configure_org_base_permission
 configure_merge_settings
 create_labels
 protect_main
