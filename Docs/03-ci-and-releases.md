@@ -51,4 +51,4 @@ PRs squash-merged to main ──▶ release-please updates "chore: release x.y.z
    `RELEASE_BOT_APP_SLUG=<app-slug> bash Scripts/SetupGitHubRepo.sh`
    This creates the `team-leads` team and the labels, sets org base permission to **Write**, sets the merge settings and turns on protection for `main`.
 4. Invite everyone to the org. Members can push branches and open PRs. Add leads to **`team-leads`** (review + merge), including org owners who merge.
-5. You need **at least 2 team leads**, because nobody can approve their own PR.
+5. Admin enforcement is **off**: admins in `team-leads` can merge their own PRs (admin bypass). Leads who aren't admins still need another lead's approval.

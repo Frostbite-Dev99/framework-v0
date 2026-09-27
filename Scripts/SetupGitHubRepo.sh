@@ -4,7 +4,8 @@
 #   - issue labels (type / layer / priority / needs-owner)
 #   - squash-only merges, auto-merge OFF, delete branch after merge
 #   - main protection: PR + 1 code-owner (team lead) approval, required CI checks,
-#     only team-leads + release bot may merge; release bot skips the review requirement.
+#     only team-leads + release bot may merge; release bot skips the review requirement;
+#     admins are not enforced, so an admin lead can merge their own PR (admin bypass).
 # Usage: RELEASE_BOT_APP_SLUG=<app-slug> bash Scripts/SetupGitHubRepo.sh
 set -euo pipefail
 
@@ -71,7 +72,7 @@ protect_main() {
     "strict": true,
     "contexts": ["PR title", "Issue link", "Meta files", "Asmdef layers", "Unity tests"]
   },
-  "enforce_admins": true,
+  "enforce_admins": false,
   "required_pull_request_reviews": {
     "required_approving_review_count": 1,
     "require_code_owner_reviews": true,
