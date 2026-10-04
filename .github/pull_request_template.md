@@ -12,9 +12,8 @@ Closes #
 1.
 
 ## Checklist ([Docs/01-csharp-best-practices.md](../Docs/01-csharp-best-practices.md))
+CI already checks formatting, `.meta` files, layers and the C# contract ([§16](../Docs/01-csharp-best-practices.md#16-what-enforces-each-rule)). These are the rest:
 - [ ] Linked issue is assigned and its acceptance criteria are met
 - [ ] Zero Console errors/warnings, tested in Play mode
-- [ ] Naming, layout, no public fields, no `Find`/`GetComponent` in `Update`
-- [ ] Events unsubscribed in `OnDisable`; no empty `catch`; no magic numbers
-- [ ] `.meta` files committed
-- [ ] Module README updated
+- [ ] Naming matches §2; no public fields, `Find`/`GetComponent` in `Update`, magic numbers, or events left subscribed in `OnDisable`
+- [ ] Module README updated if the API or status changed
