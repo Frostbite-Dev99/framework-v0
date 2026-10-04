@@ -29,4 +29,7 @@ Run the local checks from `Docs/03-ci-and-releases.md`:
 ```bash
 bash .github/scripts/CheckMetaFiles.sh
 python3 .github/scripts/CheckAsmdefLayers.py
+python3 .github/scripts/CheckCSharpContract.py
+dotnet format whitespace . --folder --include Assets/_Framework/ Assets/_Game/
 ```
+Which rules CI enforces and which are left to review: `Docs/01-csharp-best-practices.md` section 16.

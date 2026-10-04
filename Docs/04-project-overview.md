@@ -73,7 +73,7 @@ Nobody pushes straight to `main`, including leads. Every change goes through a P
 
 ### What happens automatically
 
-- **CI** runs on every PR. It checks the PR title, the issue link, Unity `.meta` files and the layer rule, and runs the tests. A PR can't merge until CI passes.
+- **CI** runs on every PR. It checks the PR title, the issue link, Unity `.meta` files, the layer rule, C# formatting and the C# contract rules, and runs the tests. [01 §16](01-csharp-best-practices.md#16-what-enforces-each-rule) lists which rules are checked automatically. A PR can't merge until CI passes.
 - **Releases:** merged features and fixes are collected into a new version number and a `CHANGELOG.md` entry by a bot. Nobody edits those files by hand.
 
 ## 4. Where things are

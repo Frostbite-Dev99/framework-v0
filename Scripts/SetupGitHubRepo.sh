@@ -70,7 +70,7 @@ protect_main() {
 {
   "required_status_checks": {
     "strict": true,
-    "contexts": ["PR title", "Issue link", "Meta files", "Asmdef layers", "Unity tests"]
+    "contexts": ["PR title", "Issue link", "Meta files", "Asmdef layers", "C# format", "C# contract", "Unity tests"]
   },
   "enforce_admins": false,
   "required_pull_request_reviews": {
