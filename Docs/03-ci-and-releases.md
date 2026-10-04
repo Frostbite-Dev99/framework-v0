@@ -11,6 +11,8 @@ For the team workflow (issues → branch → PR → review), see [`02-github-wor
 | **Issue link** | Title doesn't end in `(#N)`, body lacks `Closes #N`, issue has no assignee, or a commit has no `#N` | See [02 · Issues](02-github-workflow.md#1-issues-first) |
 | **Meta files** | Asset without `.meta`, or orphan `.meta` | Open Unity, let it generate, commit the `.meta` |
 | **Asmdef layers** | Core → UIX/Logic, UIX ↔ Logic, Framework → Game references | Communicate via `FW_Core_Events` instead |
+| **C# format** | Braces, indentation, spacing, line endings that don't match `.editorconfig` | Run the `dotnet format` fix command below. Editor format-on-save helps, but CI only trusts `dotnet format` |
+| **C# contract** | More than one type per file, type name ≠ file name, namespace not under the module's asmdef, empty `catch`, `UnityEditor` in `Runtime/` without `#if UNITY_EDITOR`, files over 300 lines | Follow the message; rules are in [01 · §16](01-csharp-best-practices.md#16-what-enforces-each-rule) |
 | **Unity tests** | Failing EditMode/PlayMode tests, compile errors | Run *Window → General → Test Runner* locally |
 
 Pushes to `main` also run a **Unity build** (smoke test, Linux player) to catch Editor-only code in runtime assemblies.
@@ -20,6 +22,8 @@ Run the fast checks locally before pushing:
 ```bash
 bash .github/scripts/CheckMetaFiles.sh
 python3 .github/scripts/CheckAsmdefLayers.py
+python3 .github/scripts/CheckCSharpContract.py
+dotnet format whitespace . --folder --include Assets/_Framework/ Assets/_Game/   # fixes formatting (needs the .NET 8 SDK)
 ```
 
 ## Releases & changelog (release-please)

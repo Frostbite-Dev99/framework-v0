@@ -281,4 +281,21 @@ catch (IOException ex)
 
 ---
 
+## 16. What enforces each rule
+
+A rule nobody checks is a suggestion. Every rule above has an enforcer, from strictest to softest:
+
+| Enforcer | Blocks merge? | Rules |
+| --- | --- | --- |
+| **CI: C# format** (`dotnet format` + `.editorconfig`) | Yes | Allman braces, 4 spaces, spacing, line endings, trailing whitespace, final newline (§4) |
+| **CI: C# contract** (`.github/scripts/CheckCSharpContract.py`) | Yes | One type per file named after the file (§1.9), namespace under the module's asmdef `rootNamespace` (§2), no empty `catch` (§1.8), no `UnityEditor` in `Runtime/` without `#if UNITY_EDITOR` (§13), file ≤ 300 lines (§4) |
+| **CI: Asmdef layers** | Yes | Layer rules, `_Framework` never references `_Game` (§1.10, §13) |
+| **IDE warnings** (`.editorconfig` in Rider / Visual Studio / VS Code) | No, fix before PR | Naming: `_camelCase` fields, `PascalCase` constants, `I` interfaces (§2); always write access modifiers, `var` only when obvious (§4) |
+| **AI review**: Claude reviews C# PRs when opened, plus a 9am MYT daily run for new commits; inline comments | No, advisory | `Find`/`GetComponent` in `Update`, magic numbers, nested `if`, hot-path allocations, `OnEnable`/`OnDisable` pairing, `public` fields, method/class size, `sealed` (§1, §4, §5–§8) |
+| **Lead review** | Yes | Design and API shape, whether code belongs in `_Framework`, README and tests updated (§14, §15) |
+
+Adding a rule? Add it to this table too, and push it as far up as it can reliably go.
+
+---
+
 **Sources:** [Unity Manual: programming best practices](https://docs.unity3d.com/6000.5/Documentation/Manual/programming-best-practices.html) · [unity.com/how-to](https://unity.com/how-to#ai) · [SamuelAsherRivello/unity-best-practices](https://github.com/SamuelAsherRivello/unity-best-practices) (SOLID + design patterns with Unity samples) · M. A. Khan, *Unity C# Coding Conventions & Best Practices* (2025).
