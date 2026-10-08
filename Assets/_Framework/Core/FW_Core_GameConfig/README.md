@@ -4,17 +4,53 @@
 - **Difficulty:** Easy
 - **Namespace / asmdef:** `FW.Core.GameConfig`
 - **Depends on:** none
-- **Owner:** _TBD_
-- **Status:** Not started
+- **Owner:** @veyroxie
+- **Status:** In progress
 
 ## Expectations (v0)
-- [ ] _Define the minimum this module must do for the reference game_
+- [x] `ConfigAsset` base: each game builds its own settings assets on it, and bad values show as warnings in the Editor
+- [x] `FeatureFlag`: on/off switch asset, one per feature
+- [x] Config is read-only at runtime. No singleton, no statics
+
+## How to use
+**Your own settings** (game-specific ones live in `_Game`, never here):
+```csharp
+[CreateAssetMenu(menuName = "Game/Config/Player")]
+public sealed class PlayerSettings : ConfigAsset
+{
+    [SerializeField, Min(0f)] private float _moveSpeed = 5f;
+    public float MoveSpeed => _moveSpeed;
+
+    public override IEnumerable<string> GetValidationErrors()
+    {
+        if (_moveSpeed <= 0f) yield return "Move Speed must be above 0.";
+    }
+}
+```
+Create the asset from the Project window (right-click > Create), then drag it into the script that needs it:
+```csharp
+[SerializeField] private PlayerSettings _settings;
+```
+
+**Feature flags:** Create > FW > GameConfig > Feature Flag, tick Is Enabled and write a description. In code:
+```csharp
+[SerializeField] private FeatureFlag _debugMenu;
+if (_debugMenu.IsEnabled) ShowDebugMenu();
+```
+
+Never change config values from code at runtime. ScriptableObject changes made during Play mode are saved to the asset.
 
 ## Public API
-_List the classes/events other modules may use. Everything else is `internal`._
+| Type | What it is |
+| --- | --- |
+| `ConfigAsset` | Abstract ScriptableObject base for settings assets. Override `GetValidationErrors()` to report bad values |
+| `FeatureFlag` | On/off switch asset. `IsEnabled`, `Description` |
 
-## Long-term plan
-_What v1+ adds._
+## TODO (not built yet)
+- [ ] Registry to look up config by type, if Inspector references get unwieldy
+- [ ] Different flag values per build (debug vs release)
+- [ ] Remote config (change values without a new build)
+- [ ] Import settings from a spreadsheet / CSV
 
 ## Files in this module
 | Path | What it's for |
