@@ -8,9 +8,9 @@
 - **Status:** In progress
 
 ## Expectations (v0)
-- [ ] `ConfigAsset` base: each game builds its own settings assets on it, and bad values show as warnings in the Editor
-- [ ] `FeatureFlag`: on/off switch asset, one per feature
-- [ ] Config is read-only at runtime. No singleton, no statics
+- [x] `ConfigAsset` base: each game builds its own settings assets on it, and bad values show as warnings in the Editor
+- [x] `FeatureFlag`: on/off switch asset, one per feature
+- [x] Config is read-only at runtime. No singleton, no statics
 
 ## How to use
 **Your own settings** (game-specific ones live in `_Game`, never here):
