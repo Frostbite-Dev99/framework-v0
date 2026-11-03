@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/Frostbite-Dev99/framework-v0/compare/v0.1.0...v0.2.0) (2026-11-03)
+
+
+### Features
+
+* **core-gameconfig:** add ConfigAsset base and FeatureFlag ([#7](https://github.com/Frostbite-Dev99/framework-v0/issues/7)) ([#8](https://github.com/Frostbite-Dev99/framework-v0/issues/8)) ([a8010be](https://github.com/Frostbite-Dev99/framework-v0/commit/a8010bee0ff59861d102d9ee4a22773604a61747))
+
 ## 0.1.0 (2026-09-27)
 
 
